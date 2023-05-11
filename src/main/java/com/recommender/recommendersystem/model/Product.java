@@ -1,8 +1,8 @@
 package com.recommender.recommendersystem.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.Set;
 
 @Entity
 public class Product {
@@ -10,44 +10,34 @@ public class Product {
     @Id
     @Column(updatable = false, nullable = false)
     private String productID;
-    private String marketID;
+    private int marketID;
     private String productName;
     private double productPrice;
     private double unitNumber;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "market_products",
+            joinColumns = @JoinColumn(name = "productID"),
+            inverseJoinColumns = @JoinColumn(name = "marketID"))
+    private Set<Market> markets;
 
     public Product() {
     }
 
-    public Product(String productID, String marketID, String productName, double productPrice, double unitNumber) {
+    public Product(String productID, int marketID, String productName, double productPrice, double unitNumber, Set<Market> markets) {
         this.productID = productID;
         this.marketID = marketID;
         this.productName = productName;
         this.productPrice = productPrice;
         this.unitNumber = unitNumber;
+        this.markets = markets;
     }
 
-    public String getProductID() {
-        return productID;
-    }
-
-    public void setProductID(String productID) {
-        this.productID = productID;
-    }
-
-    public String getMarketID() {
+    public int getMarketID() {
         return marketID;
     }
 
-    public void setMarketID(String marketID) {
+    public void setMarketID(int marketID) {
         this.marketID = marketID;
-    }
-
-    public String getProductName() {
-        return productName;
-    }
-
-    public void setProductName(String productName) {
-        this.productName = productName;
     }
 
     public double getProductPrice() {
@@ -64,5 +54,29 @@ public class Product {
 
     public void setUnitNumber(double unitNumber) {
         this.unitNumber = unitNumber;
+    }
+
+    public Set<Market> getMarkets() {
+        return markets;
+    }
+
+    public void setMarkets(Set<Market> markets) {
+        this.markets = markets;
+    }
+
+    public String getProductID() {
+        return productID;
+    }
+
+    public void setProductID(String productID) {
+        this.productID = productID;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 }

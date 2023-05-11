@@ -1,7 +1,6 @@
 package com.recommender.recommendersystem.controller;
 
 import com.recommender.recommendersystem.model.Market;
-import com.recommender.recommendersystem.model.Product;
 import com.recommender.recommendersystem.service.MarketService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,8 +24,7 @@ public class MarketController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<List<Market>> getAllMarkets(){
-        List<Market> markets = marketService.getAllMarkets();
-        return new ResponseEntity<>(markets,HttpStatus.OK);
+    public List<Market> getAllMarketsWithProducts() {
+        return marketService.getAllMarketsWithProducts();
     }
 }

@@ -4,6 +4,7 @@ import com.recommender.recommendersystem.model.Market;
 import com.recommender.recommendersystem.repository.MarketRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,5 +25,9 @@ public class MarketService {
 
     public List<Market> getAllMarkets() {
         return marketRepository.findAll();
+    }
+
+    public List<Market> getAllMarketsWithProducts() {
+        return marketRepository.findAllWithProducts();
     }
 }
