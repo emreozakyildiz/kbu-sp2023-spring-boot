@@ -14,22 +14,16 @@ public class Product {
     private String productName;
     private double productPrice;
     private double unitNumber;
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "market_products",
-            joinColumns = @JoinColumn(name = "productID"),
-            inverseJoinColumns = @JoinColumn(name = "marketID"))
-    private Set<Market> markets;
 
     public Product() {
     }
 
-    public Product(String productID, int marketID, String productName, double productPrice, double unitNumber, Set<Market> markets) {
+    public Product(String productID, int marketID, String productName, double productPrice, double unitNumber) {
         this.productID = productID;
         this.marketID = marketID;
         this.productName = productName;
         this.productPrice = productPrice;
         this.unitNumber = unitNumber;
-        this.markets = markets;
     }
 
     public int getMarketID() {
@@ -54,14 +48,6 @@ public class Product {
 
     public void setUnitNumber(double unitNumber) {
         this.unitNumber = unitNumber;
-    }
-
-    public Set<Market> getMarkets() {
-        return markets;
-    }
-
-    public void setMarkets(Set<Market> markets) {
-        this.markets = markets;
     }
 
     public String getProductID() {

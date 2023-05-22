@@ -11,24 +11,8 @@ public class Market {
     @Column(nullable = false, updatable = false)
     private int marketID;
     private String marketName;
-    @ManyToMany(mappedBy = "markets", fetch = FetchType.EAGER)
-    private Set<Product> products;
 
     public Market() {
-    }
-
-    public Market(int marketID, String marketName, Set<Product> products) {
-        this.marketID = marketID;
-        this.marketName = marketName;
-        this.products = products;
-    }
-
-    public Set<Product> getProducts() {
-        return products;
-    }
-
-    public void setProducts(Set<Product> products) {
-        this.products = products;
     }
 
     public Market(int marketID, String marketName) {
