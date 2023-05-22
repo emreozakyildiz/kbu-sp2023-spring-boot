@@ -2,8 +2,6 @@ package com.recommender.recommendersystem.model;
 
 import jakarta.persistence.*;
 
-import java.util.Set;
-
 @Entity
 public class Product {
 
