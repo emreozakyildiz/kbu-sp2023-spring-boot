@@ -12,16 +12,26 @@ public class Product {
     private String productName;
     private double productPrice;
     private double unitNumber;
+    private double rating;
 
     public Product() {
     }
 
-    public Product(String productID, int marketID, String productName, double productPrice, double unitNumber) {
+    public Product(String productID, int marketID, String productName, double productPrice, double unitNumber, double rating) {
         this.productID = productID;
         this.marketID = marketID;
         this.productName = productName;
         this.productPrice = productPrice;
         this.unitNumber = unitNumber;
+        this.rating = rating;
+    }
+
+    public double getRating() {
+        return rating;
+    }
+
+    public void setRating(double rating) {
+        this.rating = rating;
     }
 
     public int getMarketID() {
